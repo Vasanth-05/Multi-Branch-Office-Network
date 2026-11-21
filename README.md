@@ -20,7 +20,9 @@ The network consists of:
   - 1 Cisco 2911 Router
   - 1 Cisco 2960 Switch
   - 1 PC
+## Network Topology
 
+![Network Topology](screenshots/network-topology.png)
 ## Technologies Used
 
 - Cisco Packet Tracer

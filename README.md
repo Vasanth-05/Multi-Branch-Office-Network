@@ -22,7 +22,9 @@ The network consists of:
   - 1 PC
 ## Network Topology
 
-![Network Topology](screenshots/network-topology.png)
+![Network Topology]
+<img width="1407" height="792" alt="network-topology png" src="https://github.com/user-attachments/assets/809284c0-7d3f-429f-8bdc-176a098a0626" />
+
 ## Technologies Used
 
 - Cisco Packet Tracer

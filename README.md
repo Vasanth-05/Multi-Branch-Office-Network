@@ -35,6 +35,13 @@ The network consists of:
 - IPv4 Addressing
 - Network Connectivity Testing
 
+
+## Configuration Commands
+
+Detailed Cisco IOS configuration commands for all routers and switches are available here:
+
+[View Router and Switch Configuration Commands](CONFIGURATION.md)
+
 ## IP Addressing Scheme
 
 | Network | VLAN | Subnet | Default Gateway |

@@ -1,10 +1,16 @@
 # Network Configuration Commands
 
-This document contains the Cisco IOS configuration commands used in the Multi-Branch Office Network project.
+This document contains the Cisco IOS configuration commands used in the **Multi-Branch Office Network with VLANs and Static Routing** project, implemented using Cisco Packet Tracer.
+
+---
 
 ## 1. HQ Router Configuration
-Cisco 2911 – Router-on-a-Stick, DHCP, WAN and Static Routing.
 
+**Device:** Cisco 2911 Router
+
+**Purpose:** Router-on-a-Stick, inter-VLAN routing, DHCP, WAN connectivity and static routing.
+
+```cisco
 enable
 configure terminal
 hostname HQ-Router
@@ -72,10 +78,17 @@ ip route 192.168.40.0 255.255.255.0 10.0.0.2
 
 end
 write memory
+```
+
+---
 
 ## 2. Branch Router Configuration
-Cisco 2911 – Branch LAN, DHCP, WAN and Default Static Route.
 
+**Device:** Cisco 2911 Router
+
+**Purpose:** Branch LAN configuration, DHCP, WAN connectivity and default static routing.
+
+```cisco
 enable
 configure terminal
 hostname Branch-Router
@@ -107,10 +120,17 @@ ip route 0.0.0.0 0.0.0.0 10.0.0.1
 
 end
 write memory
+```
+
+---
 
 ## 3. HQ Switch Configuration
-Cisco 2960 – VLAN creation, access ports and trunk configuration.
 
+**Device:** Cisco 2960 Switch
+
+**Purpose:** VLAN creation, access port assignment and trunk configuration.
+
+```cisco
 enable
 configure terminal
 hostname HQ-Switch
@@ -158,10 +178,17 @@ exit
 
 end
 write memory
+```
+
+---
 
 ## 4. Branch Switch Configuration
-Cisco 2960 – Router and PC port configuration.
 
+**Device:** Cisco 2960 Switch
+
+**Purpose:** Connect the Branch Router and Branch PC.
+
+```cisco
 enable
 configure terminal
 hostname Branch-Switch
@@ -180,27 +207,79 @@ exit
 
 end
 write memory
+```
+
+---
 
 ## 5. Verification Commands
+
+Use the following commands to verify the device configurations.
+
+### Router Verification
 
 ```cisco
 show ip interface brief
 show ip route
 show ip dhcp binding
+show running-config
+```
+
+### Switch Verification
+
+```cisco
 show vlan brief
 show interfaces trunk
 show running-config
 ```
 
+---
+
 ## 6. Connectivity Testing
+
+Use these commands to verify communication between the HQ and Branch networks.
+
+### From HQ Router
 
 ```cisco
 ping 10.0.0.2
 ping 192.168.40.11
+```
+
+### From Branch Router
+
+```cisco
+ping 10.0.0.1
 ping 192.168.10.11
 ```
 
-## Notes
-- All configurations were implemented using Cisco Packet Tracer.
-- The network uses VLANs, DHCP, Router-on-a-Stick and static routing.
-- Refer to the Packet Tracer project file for the complete topology.
+### From HQ PC
+
+```text
+ping 192.168.40.11
+```
+
+---
+
+## 7. Network Addressing Summary
+
+| Network | IP Address | Default Gateway |
+|---|---|---|
+| Sales VLAN 10 | 192.168.10.0/24 | 192.168.10.1 |
+| HR VLAN 20 | 192.168.20.0/24 | 192.168.20.1 |
+| IT VLAN 30 | 192.168.30.0/24 | 192.168.30.1 |
+| Branch LAN | 192.168.40.0/24 | 192.168.40.1 |
+| WAN Link | 10.0.0.0/30 | HQ: 10.0.0.1 / Branch: 10.0.0.2 |
+
+---
+
+## 8. Project Notes
+
+- Configured using Cisco Packet Tracer.
+- Implemented VLAN segmentation for Sales, HR and IT departments.
+- Configured inter-VLAN routing using Router-on-a-Stick.
+- Implemented DHCP services for automatic IP address allocation.
+- Configured static routing between HQ and Branch networks.
+- Verified end-to-end connectivity using ICMP ping tests.
+
+**Project Repository:**  
+[Multi-Branch Office Network with VLANs and Static Routing](https://github.com/Vasanth-05/Multi-Branch-Office-Network)
